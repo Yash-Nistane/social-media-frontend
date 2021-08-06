@@ -42,7 +42,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
               src={
                 o?.profilePicture
                   ? o.profilePicture
-                  : PF + "person/noAvatar.png"
+                  :"https://social-media--app.s3.ap-south-1.amazonaws.com/noAvatar.png"
               }
               alt=""
             />

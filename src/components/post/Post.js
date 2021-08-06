@@ -42,7 +42,11 @@ export default function Post({ post }) {
             <Link to={`/profile/${user.username}`}>
               <img
                 className="postProfileImg"
-                src={user.profilePicture ? user.profilePicture : PF + "person/noAvatar.png"}
+                src={
+                  user.profilePicture
+                    ? user.profilePicture
+                    : "https://social-media--app.s3.ap-south-1.amazonaws.com/noAvatar.png"
+                }
                 alt=""
               />
             </Link>
@@ -61,13 +65,13 @@ export default function Post({ post }) {
           <div className="postBottomLeft">
             <img
               className="likeIcon"
-              src={`${PF}like.png`}
+              src={`https://social-media--app.s3.ap-south-1.amazonaws.com/like.png`}
               onClick={likeHandler}
               alt=""
             />
             <img
               className="likeIcon"
-              src={`${PF}heart.png`}
+              src={`https://social-media--app.s3.ap-south-1.amazonaws.com/heart.png`}
               onClick={likeHandler}
               alt=""
             />

@@ -96,7 +96,7 @@ export default function Profile() {
                   src={
                     user.coverPicture
                       ? user.coverPicture
-                      : PF + "person/noCover.png"
+                      : "https://social-media--app.s3.ap-south-1.amazonaws.com/noCover.png"
                   }
                   alt=""
                 />
@@ -114,7 +114,7 @@ export default function Profile() {
                   src={
                     user.profilePicture
                       ? user.profilePicture
-                      : PF + "person/noAvatar.png"
+                      : "https://social-media--app.s3.ap-south-1.amazonaws.com/noAvatar.png"
                   }
                   alt=""
                 />

@@ -81,12 +81,20 @@ export default function Rightbar({ user }) {
     return (
       <>
         <div className="birthdayContainer">
-          <img className="birthdayImg" src={`${PF}gift.png`} alt="" />
+          <img
+            className="birthdayImg"
+            src={`https://social-media--app.s3.ap-south-1.amazonaws.com/gift.png`}
+            alt=""
+          />
           <span className="birthdayText">
             <b>Yash Nistane</b> and <b>3 other friends</b> have a birhday today.
           </span>
         </div>
-        <img className="rightbarAd" src={`${PF}ad.png`} alt="" />
+        <img
+          className="rightbarAd"
+          src={`https://social-media--app.s3.ap-south-1.amazonaws.com/ad.png`}
+          alt=""
+        />
         <h4 className="rightbarTitle">Online Friends</h4>
         <Link
           style={{ textDecoration: "none", color: "black" }}

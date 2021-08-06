@@ -8,7 +8,7 @@ export default function CloseFriend({ user }) {
       <Link className="closeFriendLink" to={`/profile/${user.username}`}>
         <img
           className="sidebarFriendImg"
-          src={user.profilePicture ? user.profilePicture :PF + "person/noAvatar.png"}
+          src={user.profilePicture ? user.profilePicture :"https://social-media--app.s3.ap-south-1.amazonaws.com/noAvatar.png"}
           alt=""
         />
         <span className="sidebarFriendName">{user.username}</span>

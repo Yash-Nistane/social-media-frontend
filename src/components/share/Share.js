@@ -31,19 +31,19 @@ export default function Share() {
       data.append("file", file);
       data.append("userId", user._id);
       data.append("desc", desc.current.value);
-      
-      //newPost.img = fileName;  
-     
+
+      //newPost.img = fileName;
+
       try {
-        await axios.post("/posts/upload",data);
+        await axios.post("/posts/upload", data);
         //window.location.reload();
       } catch (err) {}
-    // } else {
-    //   try {
-    //     await axios.post("/posts", newPost);
-    //     window.location.reload();
-    //   } catch (err) {}
-     }
+      // } else {
+      //   try {
+      //     await axios.post("/posts", newPost);
+      //     window.location.reload();
+      //   } catch (err) {}
+    }
   };
 
   return (
@@ -55,7 +55,7 @@ export default function Share() {
             src={
               user.profilePicture
                 ? user.profilePicture
-                : PF + "person/noAvatar.png"
+                : "https://social-media--app.s3.ap-south-1.amazonaws.com/noAvatar.png"
             }
             alt=""
           />
