@@ -18,12 +18,14 @@ const SignUp = (props) => {
   const [city, setCity] = useState("");
   const [relationship, setRelationship] = useState("");
   const [bio, setBio] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { user, error, isFetching, dispatch } = useContext(AuthContext);
   const history = useHistory();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     dispatch({ type: "LOGIN_START" });
     try {
@@ -35,11 +37,13 @@ const SignUp = (props) => {
 
       if (res.status == 200) {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        setLoading(false);
         history.push("/");
       }
     } catch (err) {
       const res = err.response;
       //dispatch({ type: "LOGIN_FAILURE", payload: err });
+      setLoading(false);
       if (res.status == 404 || res.status == 400) {
         alert(res.data);
       }
@@ -48,10 +52,12 @@ const SignUp = (props) => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setLoading(true);
     //console.log("hdhfhsahf", email, password, name);
 
     if (!name || !email || !password || !city || !relationship || !bio) {
       alert("Please enter all the details !!");
+      setLoading(false);
     } else {
       dispatch({ type: "SIGNUP_START" });
       try {
@@ -63,17 +69,19 @@ const SignUp = (props) => {
           relationship: relationship,
           desc: bio,
         });
-        console.log(res.data);
+        //console.log(res.data);
 
         if (res.status == 200) {
           dispatch({ type: "SIGNUP_SUCCESS", payload: res.data });
+          setLoading(false);
           history.push("/");
         } else {
           alert("Username already exist !");
         }
       } catch (err) {
         dispatch({ type: "SIGNUP_FAILURE", payload: err });
-        console.log(err.response);
+        setLoading(false);
+        //console.log(err.response);
         alert(err.response.data);
       }
     }
@@ -145,7 +153,13 @@ const SignUp = (props) => {
                 onChange={(e) => setBio(e.target.value)}
               />
 
-              <button type="submit">Sign Up</button>
+              <button type="submit">
+                {loading ? (
+                  <CircularProgress color="white" size="12px" />
+                ) : (
+                  "Sign Up"
+                )}
+              </button>
             </form>
           </div>
           <div class="form-container sign-in-container">
@@ -174,7 +188,13 @@ const SignUp = (props) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               {/* <a href="#">Forgot your password?</a> */}
-              <button type="submit">Sign In</button>
+              <button type="submit">
+                {loading ? (
+                  <CircularProgress color="white" size="12px" />
+                ) : (
+                  "Sign In"
+                )}
+              </button>
             </form>
           </div>
           <div class="overlay-container">
@@ -182,7 +202,8 @@ const SignUp = (props) => {
               <div class="overlay-panel overlay-left">
                 <h1>Welcome Back!</h1>
                 <p>
-                  To keep connected with your friends please login with your personal info
+                  To keep connected with your friends please login with your
+                  personal info
                 </p>
                 <button class="ghost" id="signIn">
                   Sign In

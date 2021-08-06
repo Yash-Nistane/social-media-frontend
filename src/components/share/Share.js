@@ -9,12 +9,14 @@ import {
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "../../helpers/axios";
+import { CircularProgress } from "@material-ui/core";
 
 export default function Share() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const desc = useRef();
   const [file, setFile] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -24,6 +26,8 @@ export default function Share() {
     // };
     //console.log("newposttttt",newPost);
     //console.log("fileeeeee",file);
+
+    setIsUploading(true);
 
     const data = new FormData();
     const fileName = Date.now() + file.name;
@@ -35,13 +39,19 @@ export default function Share() {
       data.append("file", file);
       //newPost.img = fileName;
 
-      try {
-        await axios.post("/posts/upload", data);
-        window.location.reload();
-      } catch (err) {}
+       try {
+         const res = await axios.post("/posts/upload", data);
+         if(res){
+           setIsUploading(false);
+         }
+         window.location.reload();
+       } catch (err) {}
     } else {
       try {
-        await axios.post("/posts", data);
+        const res = await axios.post("/posts", data);
+        if(res){
+          setIsUploading(false);
+        }
         window.location.reload();
       } catch (err) {}
     }
@@ -99,8 +109,10 @@ export default function Share() {
               <span className="shareOptionText">Feelings</span>
             </div>
           </div>
-          <button className="shareButton" type="submit">
-            Share
+          <button className={`shareButton ${isUploading ? "isUploading" :""}` }type="submit">
+            
+              Share {isUploading ? <CircularProgress color="white" size="12px"/> : null}
+            
           </button>
         </form>
       </div>
