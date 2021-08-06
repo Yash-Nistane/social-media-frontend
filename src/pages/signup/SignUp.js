@@ -173,7 +173,7 @@ const SignUp = (props) => {
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <a href="#">Forgot your password?</a>
+              {/* <a href="#">Forgot your password?</a> */}
               <button type="submit">Sign In</button>
             </form>
           </div>
@@ -182,7 +182,7 @@ const SignUp = (props) => {
               <div class="overlay-panel overlay-left">
                 <h1>Welcome Back!</h1>
                 <p>
-                  To keep connected with us please login with your personal info
+                  To keep connected with your friends please login with your personal info
                 </p>
                 <button class="ghost" id="signIn">
                   Sign In
@@ -190,7 +190,7 @@ const SignUp = (props) => {
               </div>
               <div class="overlay-panel overlay-right">
                 <h1>Hello, Friend!</h1>
-                <p>Enter your personal details and start journey with us</p>
+                <p>Enter your personal details and connect with your friends</p>
                 <button class="ghost" id="signUp">
                   Sign Up
                 </button>
