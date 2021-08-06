@@ -1,0 +1,4 @@
+export const baseUrl = 'http://localhost:8800';
+
+export const api = `${baseUrl}/api`;
+
