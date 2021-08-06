@@ -21,8 +21,8 @@ export default function Rightbar({ user }) {
 
   //console.log("FRIENDS", friends);
   //console.log(OnlineUsers);
-  console.log("followingsssssssssss", currentUser.followings);
-  console.log("followed", followed);
+  //console.log("followingsssssssssss", currentUser.followings);
+  //console.log("followed", followed);
   //console.log( "userrrrrr._id",user._id);
   useEffect(() => {
     if (user) {

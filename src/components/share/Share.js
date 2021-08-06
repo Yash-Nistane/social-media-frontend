@@ -24,25 +24,26 @@ export default function Share() {
     // };
     //console.log("newposttttt",newPost);
     //console.log("fileeeeee",file);
-    if (file) {
-      const data = new FormData();
-      const fileName = Date.now() + file.name;
-      data.append("name", fileName);
-      data.append("file", file);
-      data.append("userId", user._id);
-      data.append("desc", desc.current.value);
 
+    const data = new FormData();
+    const fileName = Date.now() + file.name;
+    data.append("name", fileName);
+    data.append("userId", user._id);
+    data.append("desc", desc.current.value);
+
+    if (file) {
+      data.append("file", file);
       //newPost.img = fileName;
 
       try {
         await axios.post("/posts/upload", data);
-        //window.location.reload();
+        window.location.reload();
       } catch (err) {}
-      // } else {
-      //   try {
-      //     await axios.post("/posts", newPost);
-      //     window.location.reload();
-      //   } catch (err) {}
+    } else {
+      try {
+        await axios.post("/posts", data);
+        window.location.reload();
+      } catch (err) {}
     }
   };
 

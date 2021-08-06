@@ -14,7 +14,7 @@ import { AuthContext } from "../../context/AuthContext";
 export default function Profile() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState({});
-  const { user: currentUser } = useContext(AuthContext);
+  const { user: currentUser, dispatch } = useContext(AuthContext);
   const [profilePic, setProfilePic] = useState("");
   const [coverPic, setCoverPic] = useState("");
   const [coverEdit, setCoverEdit] = useState(false);
@@ -43,6 +43,7 @@ export default function Profile() {
         );
 
         if (res.status == 200) {
+          dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
           alert("Profile photo uploaded succesfully !");
         }
       } catch (error) {

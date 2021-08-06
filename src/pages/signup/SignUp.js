@@ -31,7 +31,7 @@ const SignUp = (props) => {
         email: email,
         password: password,
       });
-      console.log(res);
+      //console.log(res);
 
       if (res.status == 200) {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
@@ -50,7 +50,7 @@ const SignUp = (props) => {
     e.preventDefault();
     //console.log("hdhfhsahf", email, password, name);
 
-    if (name || email || password || city || relationship || bio) {
+    if (!name || !email || !password || !city || !relationship || !bio) {
       alert("Please enter all the details !!");
     } else {
       dispatch({ type: "SIGNUP_START" });
@@ -97,12 +97,12 @@ const SignUp = (props) => {
 
   return (
     <>
-    <div>
-      <div class="container-login" id="container">
-        <div class="form-container sign-up-container">
-          <form onSubmit={handleSignUp}>
-            <h1>Create Account</h1>
-            {/* <div class="social-container">
+      <div>
+        <div class="container-login" id="container">
+          <div class="form-container sign-up-container">
+            <form onSubmit={handleSignUp}>
+              <h1>Create Account</h1>
+              {/* <div class="social-container">
               <a href="#" class="social">
                 <i class="fab fa-facebook-f"></i>
               </a>
@@ -114,44 +114,44 @@ const SignUp = (props) => {
               </a>
             </div>
             <span>or use your email for registration</span> */}
-            <input
-              type="text"
-              placeholder="Name"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="City"
-              onChange={(e) => setCity(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Relationship"
-              onChange={(e) => setRelationship(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Bio"
-              onChange={(e) => setBio(e.target.value)}
-            />
+              <input
+                type="text"
+                placeholder="Name"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="City"
+                onChange={(e) => setCity(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Relationship"
+                onChange={(e) => setRelationship(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Bio"
+                onChange={(e) => setBio(e.target.value)}
+              />
 
-            <button type="submit">Sign Up</button>
-          </form>
-        </div>
-        <div class="form-container sign-in-container">
-          <form onSubmit={handleLogin}>
-            <h1>Sign in</h1>
-            {/* <div class="social-container">
+              <button type="submit">Sign Up</button>
+            </form>
+          </div>
+          <div class="form-container sign-in-container">
+            <form onSubmit={handleLogin}>
+              <h1>Sign in</h1>
+              {/* <div class="social-container">
               <a href="#" class="social">
                 <i class="fab fa-facebook-f"></i>
               </a>
@@ -163,41 +163,41 @@ const SignUp = (props) => {
               </a>
             </div>
             <span>or use your account</span> */}
-            <input
-              type="email"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <a href="#">Forgot your password?</a>
-            <button type="submit">Sign In</button>
-          </form>
-        </div>
-        <div class="overlay-container">
-          <div class="overlay">
-            <div class="overlay-panel overlay-left">
-              <h1>Welcome Back!</h1>
-              <p>
-                To keep connected with us please login with your personal info
-              </p>
-              <button class="ghost" id="signIn">
-                Sign In
-              </button>
-            </div>
-            <div class="overlay-panel overlay-right">
-              <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
-              <button class="ghost" id="signUp">
-                Sign Up
-              </button>
+              <input
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <a href="#">Forgot your password?</a>
+              <button type="submit">Sign In</button>
+            </form>
+          </div>
+          <div class="overlay-container">
+            <div class="overlay">
+              <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>
+                  To keep connected with us please login with your personal info
+                </p>
+                <button class="ghost" id="signIn">
+                  Sign In
+                </button>
+              </div>
+              <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost" id="signUp">
+                  Sign Up
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   );

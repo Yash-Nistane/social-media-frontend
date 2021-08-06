@@ -14,7 +14,7 @@ export const signUpCall = async (userCredential, dispatch) => {
   dispatch({ type: "SIGNUP_START" });
   try {
     const res = await axios.post("/auth/register", userCredential);
-    console.log(res.data);
+   //console.log(res.data);
     dispatch({ type: "SIGNUP_SUCCESS", payload: res.data });
   } catch (err) {
     dispatch({ type: "SIGNUP_FAILURE", payload: err });

@@ -26,7 +26,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
          `/conversations/find/${currentId}/${user._id}`
        );
        setCurrentChat(res.data);
-       console.log("conversations",res.data);
+       //console.log("conversations",res.data);
      } catch (err) {
        console.log(err);
      }

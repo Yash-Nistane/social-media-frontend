@@ -22,7 +22,7 @@ export default function Messenger() {
   const { user, OnlineUsers, dispatch } = useContext(AuthContext);
   const scrollRef = useRef();
 
-  console.log("renderringgg", friendPhoto);
+  //console.log("renderringgg", friendPhoto);
 
   useEffect(() => {
     //socket.current = io("ws://localhost:8900");
@@ -35,7 +35,7 @@ export default function Messenger() {
       });
     });
 
-    console.log("yash", arrivalMessage);
+    //console.log("yash", arrivalMessage);
   }, []);
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function Messenger() {
       const getUser = async () => {
         try {
           const res = await axios("/users?userId=" + receiverId);
-          console.log("hjhuofhsdauhf", res);
+          //console.log("hjhuofhsdauhf", res);
           setFriendPhoto(res.data.profilePicture);
         } catch (err) {
           console.log(err);
@@ -105,7 +105,7 @@ export default function Messenger() {
       text: newMessage,
       conversationId: currentChat._id,
     };
-    console.log("helloww", onlineUsers);
+    //("helloww", onlineUsers);
     const receiverId = currentChat.members.find(
       (member) => member !== user._id
     );

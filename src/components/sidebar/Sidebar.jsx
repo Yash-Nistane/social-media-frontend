@@ -28,7 +28,7 @@ export default function Sidebar() {
     
   }, []);
 
-  console.log(allUsers);
+ //console.log(allUsers);
 
   return (
     <div className="sidebar">
