@@ -9,9 +9,11 @@ export default function Online({ user }) {
         <img
           className="rightbarProfileImg"
           src={
-            user.profilePicture
+            user
               ? user.profilePicture
-              : "https://social-media--app.s3.ap-south-1.amazonaws.com/noAvatar.png"
+                ? user.profilePicture
+                : "https://social-media--app.s3.ap-south-1.amazonaws.com/noAvatar.png"
+              : ""
           }
           alt=""
         />
