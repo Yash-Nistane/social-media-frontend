@@ -30,26 +30,26 @@ export default function Share() {
     setIsUploading(true);
 
     const data = new FormData();
-    const fileName = Date.now() + file.name;
-    data.append("name", fileName);
+    //data.append("name", fileName);
     data.append("userId", user._id);
     data.append("desc", desc.current.value);
 
     if (file) {
+      //const fileName = Date.now() + file.name;
       data.append("file", file);
       //newPost.img = fileName;
 
-       try {
-         const res = await axios.post("/posts/upload", data);
-         if(res){
-           setIsUploading(false);
-         }
-         window.location.reload();
-       } catch (err) {}
+      try {
+        const res = await axios.post("/posts/upload", data);
+        if (res) {
+          setIsUploading(false);
+        }
+        window.location.reload();
+      } catch (err) {}
     } else {
       try {
         const res = await axios.post("/posts", data);
-        if(res){
+        if (res) {
           setIsUploading(false);
         }
         window.location.reload();
@@ -109,10 +109,14 @@ export default function Share() {
               <span className="shareOptionText">Feelings</span>
             </div>
           </div>
-          <button className={`shareButton ${isUploading ? "isUploading" :""}` }type="submit">
-            
-              Share {isUploading ? <CircularProgress color="white" size="12px"/> : null}
-            
+          <button
+            className={`shareButton ${isUploading ? "isUploading" : ""}`}
+            type="submit"
+          >
+            Share{" "}
+            {isUploading ? (
+              <CircularProgress color="white" size="12px" />
+            ) : null}
           </button>
         </form>
       </div>
