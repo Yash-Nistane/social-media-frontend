@@ -29,14 +29,14 @@ export default function Share() {
 
     setIsUploading(true);
 
-    const data = new FormData();
-    //data.append("name", fileName);
-    data.append("userId", user._id);
-    data.append("desc", desc.current.value);
-
     if (file) {
-      //const fileName = Date.now() + file.name;
+      const data = new FormData();
+      data.append("userId", user._id);
+      data.append("desc", desc.current.value);
       data.append("file", file);
+      //const fileName = Date.now() + file.name;
+      //data.append("name", fileName);
+
       //newPost.img = fileName;
 
       try {
@@ -48,6 +48,10 @@ export default function Share() {
       } catch (err) {}
     } else {
       try {
+        const data = {
+          userId: user._id,
+          desc: desc.current.value ,
+        };
         const res = await axios.post("/posts", data);
         if (res) {
           setIsUploading(false);
